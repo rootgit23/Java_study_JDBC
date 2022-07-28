@@ -10,6 +10,23 @@ import com.im.util.DBConnect;
 
 public class EmployeesDAO {
 	
+	public void getSalaryInfo() throws Exception{
+		Connection con = DBConnect.getConnection();
+		String sql = "SELECT SUM(SALARY), AVG(SALARY), MAX(SALARY) AS MAX FROM EMPLOYEES";
+		PreparedStatement st = con.prepareStatement(sql);
+		ResultSet rs = st.executeQuery();
+		if(rs.next()) {
+			int sum = rs.getInt("SUM(SALARY)");
+			double avg = rs.getDouble("AVG(SALARY)");
+			int max = rs.getInt("MAX");
+			System.out.println(sum);
+			System.out.println(avg);
+			System.out.println(max);
+			
+		}
+		DBConnect.disConnect(rs, st, con);
+	}
+	
 	public EmployeesDTO getDetail(Integer employee_id) throws Exception {
 		EmployeesDTO edto = null;
 		Connection con = DBConnect.getConnection();

@@ -33,12 +33,13 @@ public class TestMain {
 			//rv.view2();
 			//ar = countriesDAO.getList();
 			//cv.view(ar);
-		//	cdto = countriesDAO.getDetail("IT");
+			//cdto = countriesDAO.getDetail("IT");
 			//cv.view(cdto);
 			//edto = employeesDAO.getDetail(100);
 			//ev.view(edto);
-			ar2 = employeesDAO.getList();
-			ev.view(ar2);
+			//ar2 = employeesDAO.getList();
+			//ev.view(ar2);
+			employeesDAO.getSalaryInfo();
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
