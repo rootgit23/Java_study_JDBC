@@ -11,6 +11,8 @@ import com.im.util.DBConnect;
 public class EmployeesDAO {
 	
 	public void getSalaryInfo() throws Exception{
+		
+		//함수 예시
 		Connection con = DBConnect.getConnection();
 		String sql = "SELECT SUM(SALARY), AVG(SALARY), MAX(SALARY) AS MAX FROM EMPLOYEES";
 		PreparedStatement st = con.prepareStatement(sql);

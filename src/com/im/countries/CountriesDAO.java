@@ -9,6 +9,18 @@ import com.im.util.DBConnect;
 
 public class CountriesDAO {
 	
+	public int setCountries(CountriesDTO cdto) throws Exception{
+		Connection con = DBConnect.getConnection();
+		String sql = "INSERT INTO COUNTRIES VALUES(?,?,?)";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, cdto.getCountry_id());
+		st.setString(2, cdto.getCountry_name());
+		st.setInt(3, cdto.getRegion_id());
+		int result = st.executeUpdate();
+		DBConnect.disConnect(st, con);
+		return result;
+	}
+	
 	public CountriesDTO getDetail(String country_id) throws Exception {
 		CountriesDTO cdto = null;
 		Connection con = DBConnect.getConnection();

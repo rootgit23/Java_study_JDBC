@@ -9,6 +9,18 @@ import com.im.util.DBConnect;
 
 public class RegionsDAO {
 	
+	//Regions에 데이터를 추가
+	public int setRegion(RegionsDTO regionDTO) throws Exception {
+		Connection con = DBConnect.getConnection();
+		String sql = "INSERT INTO REGIONS VALUES(?,?)";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, regionDTO.getId());
+		st.setString(2, regionDTO.getName());
+		int result = st.executeUpdate();
+		DBConnect.disConnect(st, con);
+		return result;
+	}
+	
 	//2. Regions에서 하나의 결과
 	public RegionsDTO getDetail(int region_id) throws Exception {
 		//1. DB 연결
